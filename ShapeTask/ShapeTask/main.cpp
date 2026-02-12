@@ -34,26 +34,26 @@ public:
     }
 
     void draw() const override {
-        const int drawingArea = 12;
-        const int center = drawingArea / 2;
-        const double scale = 2.5;
+        //const int drawingArea = 12;
+        //const int center = drawingArea / 2;
+        //const double scale = 2.5;
 
-        std::cout << name() << " (r=" << radius_ << "):" << std::endl;
+        //std::cout << name() << " (r=" << radius_ << "):" << std::endl;
 
-        for (int y = 0; y < drawingArea; ++y) {
-            for (int x = 0; x < drawingArea; ++x) {
-                double dx = (x - center) / 2.0;
-                double dy = (y - center) / 2.0;
+        //for (int y = 0; y < drawingArea; ++y) {
+        //    for (int x = 0; x < drawingArea; ++x) {
+        //        double dx = (x - center) / 2.0;
+        //        double dy = (y - center) / 2.0;
 
-                if (dx * dx + dy * dy <= (radius_ / scale) * (radius_ / scale)) {
-                    std::cout << "*";
-                }
-                else {
-                    std::cout << " ";
-                }
-            }
-            std::cout << std::endl;
-        }
+        //        if (dx * dx + dy * dy <= (radius_ / scale) * (radius_ / scale)) {
+        //            std::cout << "*";
+        //        }
+        //        else {
+        //            std::cout << " ";
+        //        }
+        //    }
+        //    std::cout << std::endl;
+        //}
     }
 };
 
@@ -72,12 +72,12 @@ public:
     }
 
     void draw() const override {
-        std::cout << name() << " (w=" << width_ << ", h=" << height_ << "):" << std::endl;
-        for (int i = 0; i < height_; ++i) {
-            for (int j = 0; j < width_; ++j)
-                std::cout << "*";
-            std::cout << std::endl;
-        }
+        //std::cout << name() << " (w=" << width_ << ", h=" << height_ << "):" << std::endl;
+        //for (int i = 0; i < height_; ++i) {
+        //    for (int j = 0; j < width_; ++j)
+        //        std::cout << "*";
+        //    std::cout << std::endl;
+        //}
     }
 };
 
@@ -96,13 +96,13 @@ public:
     }
 
     void draw() const override {
-        std::cout << name() << " (b=" << base_ << ", h=" << height_ << "):" << std::endl;
-        for (int i = 0; i < height_; ++i) {
-            int spaces = height_ - i - 1;
-            for (int s = 0; s < spaces; ++s) std::cout << " ";
-            for (int j = 0; j < (i * 2 + 1); ++j) std::cout << "*";
-            std::cout << std::endl;
-        }
+        //std::cout << name() << " (b=" << base_ << ", h=" << height_ << "):" << std::endl;
+        //for (int i = 0; i < height_; ++i) {
+        //    int spaces = height_ - i - 1;
+        //    for (int s = 0; s < spaces; ++s) std::cout << " ";
+        //    for (int j = 0; j < (i * 2 + 1); ++j) std::cout << "*";
+        //    std::cout << std::endl;
+        //}
     }
 };
 
@@ -136,9 +136,10 @@ int main() {
     std::unique_ptr<ShapeFactory> factory = std::make_unique<SimpleShapeFactory>();
 
     std::vector<std::unique_ptr<Shape>> shapes;
-    shapes.push_back(factory->createCircle(3.0));
+    shapes.push_back(factory->createCircle(6.0));
     shapes.push_back(factory->createRectangle(4.0, 2.0));
     shapes.push_back(factory->createTriangle(5.0, 3.0));
+    shapes.push_back(factory->createTriangle(10.0, 5.0));
 
     double totalArea = 0;
 

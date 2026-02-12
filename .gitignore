@@ -4,6 +4,8 @@
 *.suo
 *.sln.docstates
 *.cache
+ShapeTask/x64/
+ShapeTask/ShapeTask/x64/
 
 # Build
 *.exe
