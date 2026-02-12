@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <memory>
 
@@ -132,22 +132,27 @@ public:
 
 int main()
 {
-    std::unique_ptr<ShapeFactory> factory = std::make_unique<SimpleShapeFactory>();
+    try {
+        std::unique_ptr<ShapeFactory> factory = std::make_unique<SimpleShapeFactory>();
 
-    std::vector<std::unique_ptr<Shape>> shapes;
-    shapes.push_back(factory->createCircle(6.0));
-    shapes.push_back(factory->createRectangle(4.0, 2.0));
-    shapes.push_back(factory->createTriangle(5.0, 3.0));
-    shapes.push_back(factory->createTriangle(10.0, 5.0));
+        std::vector<std::unique_ptr<Shape>> shapes;
+        shapes.push_back(factory->createCircle(6.0));
+        shapes.push_back(factory->createRectangle(4.0, 2.0));
+        shapes.push_back(factory->createTriangle(5.0, 3.0));
+        shapes.push_back(factory->createTriangle(-5.0, 5.0));
 
-    double totalArea = 0;
+        double totalArea = 0;
 
-    for (const auto& shape : shapes) {
-        std::cout << "\nArea " << shape->name() << ": " << shape->area() << std::endl;
-        shape->draw();
-        totalArea += shape->area();
+        for (const auto& shape : shapes) {
+            std::cout << "\nArea " << shape->name() << ": " << shape->area() << std::endl;
+            shape->draw();
+            totalArea += shape->area();
+        }
+
+        std::cout << "\nCommon area: " << totalArea << std::endl;
     }
-
-    std::cout << "\nCommon area: " << totalArea << std::endl;
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
     return 0;
 }
