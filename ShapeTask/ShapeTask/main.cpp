@@ -25,8 +25,8 @@ private:
     double radius_;
 
 public:
-    Circle(double radius) : Shape("Круг"), radius_(radius) {
-        if (radius <= 0) throw std::invalid_argument("Радиус должен быть > 0");
+    Circle(double radius) : Shape("Circle"), radius_(radius) {
+        if (radius <= 0) throw std::invalid_argument("Radius must be > 0");
     }
 
     double area() const override {
@@ -63,8 +63,8 @@ private:
     double width_, height_;
 
 public:
-    Rectangle(double width, double height) : Shape("Прямоугольник"), width_(width), height_(height) {
-        if (width <= 0 || height <= 0) throw std::invalid_argument("Стороны должны быть > 0");
+    Rectangle(double width, double height) : Shape("Rectangle"), width_(width), height_(height) {
+        if (width <= 0 || height <= 0) throw std::invalid_argument("Sides must be > 0");
     }
 
     double area() const override {
@@ -87,8 +87,8 @@ private:
     double base_, height_;
 
 public:
-    Triangle(double base, double height) : Shape("Треугольник"), base_(base), height_(height) {
-        if (base <= 0 || height <= 0) throw std::invalid_argument("Основание и высота должны быть > 0");
+    Triangle(double base, double height) : Shape("Triangle"), base_(base), height_(height) {
+        if (base <= 0 || height <= 0) throw std::invalid_argument("Sides must be > 0");
     }
 
     double area() const override {
@@ -130,9 +130,8 @@ public:
     }
 };
 
-int main() {
-    setlocale(LC_ALL, "ru");
-
+int main()
+{
     std::unique_ptr<ShapeFactory> factory = std::make_unique<SimpleShapeFactory>();
 
     std::vector<std::unique_ptr<Shape>> shapes;
@@ -144,11 +143,11 @@ int main() {
     double totalArea = 0;
 
     for (const auto& shape : shapes) {
-        std::cout << "\nПлощадь " << shape->name() << ": " << shape->area() << std::endl;
+        std::cout << "\nArea " << shape->name() << ": " << shape->area() << std::endl;
         shape->draw();
         totalArea += shape->area();
     }
 
-    std::cout << "\nОбщая площадь: " << totalArea << std::endl;
+    std::cout << "\nCommon area: " << totalArea << std::endl;
     return 0;
 }
